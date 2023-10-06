@@ -1,0 +1,17 @@
+@font-face { font-family: origram; src: url(origames.ttf); }
+
+:root { --theme: #002233 }
+
+* { padding: 0; margin:0; box-sizing: border-box; font-family: 'origram'; }
+html { overscroll-behavior: none; overflow: hidden; background-color: var(--theme); display: flex; justify-content: center; align-items: center; }
+
+body { height: 100vh; width: 100vw; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 5vh }
+.title { width: 40vh; }
+.skull { width: 10vh; }
+.shadow-wrap { filter: drop-shadow(0 0 1vh #000A) }
+button { border-radius: 0; border: none; outline: none; background-color: #fff; color: var(--theme); width: 75vw; aspect-ratio: 10 / 1; max-width: 400px; font-size: 2vh; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); transition: .2s ease; animation: pulse 1s ease infinite; cursor: pointer }
+button:hover { transform: scale(1.02); }
+
+@keyframes pulse {
+    50% { transform: scale(1.01);}    
+}

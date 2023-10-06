@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sea of Dice</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+
+    <!-- <script src="https://unpkg.com/@supabase/supabase-js@2"></script> -->
+
+</head>
+<body>
+
+    <svg style="position: absolute;">
+        <defs>
+            <filter id="a" x="-1" y="-1" width="3" height="3">
+                <feFlood flood-color="rgb(0,0,0)" flood-opacity="1"/>
+                <feComposite in2="SourceGraphic" operator="in"/>
+                <feGaussianBlur stdDeviation="2"/>
+                <feComposite in="SourceGraphic"/>
+            </filter>
+        </defs>
+    </svg>
+
+    
+
+    <div id="homescreen">
+
+         <div class="dice-container">
+            <div class="wave">
+               <div class="dice">
+                  <div class="face f0 pip2">
+                        <svg class="pip pe-all" onclick="join()" viewBox="0 0 35 35">
+                            <g fill="#d4aa00">
+                                <path d="m25 25-15-15v15z"/>
+                                <path d="m25 25v-15h-15z"/>
+                                <path d="m25 30h-15v-5h15z"/>
+                                <path d="m10 5h15v5h-15z"/>
+                                <path d="m5 25v-15l5-5v25z"/>
+                                <path d="m25 5 5 5v15l-5 5z"/>
+                            </g>
+                        </svg>
+                        <svg class="pip pe-all" onclick="new Combat(new Player('pl'), new Player('en'))" viewBox="0 0 35 35">
+                           <g fill="#d4aa00">
+                               <path d="m20 32h-5v-10l5 5z"/>
+                               <path d="m15 12v10l5 5v-15z"/>
+                               <path d="m25 27-5 5v-20h5z"/>
+                               <path d="m15 32-5-5v-15h5z"/>
+                               <path d="m15 12 5-5h5v5z"/>
+                               <path d="m10 7h5l5 5h-10z"/>
+                               <path d="m10 27-5-6v-19l5 5z"/>
+                               <path d="m25 7 5-5v20l-5 5z"/>
+                           </g>
+                       </svg>
+                     <svg viewBox="0 0 10 10">
+                        <g fill="#784421" class="color1">
+                           <path d="m1 1v8h8v-8z"/>
+                           <path d="m1 7h8v2h-8z"/>
+                           <path d="m1 6v-2h8v2z"/>
+                           <path d="m1 3v-2h8v2z"/>
+                           <path d="m0 10h10v-10h-10v10l1-1v-8h8v8h-8z"/>
+                        </g>
+                        <g class="color2" fill="#a80">
+                           <path d="m0 3 1-1-2e-8-1-1-1z"/>
+                           <path d="m0 0h3l-1 1-1-2e-8z"/>
+                           <path d="m8 1 1-2e-8 1-1h-3z"/>
+                           <path d="m9 1 1-1 2e-7 3-1-1z"/>
+                           <path d="m9 8 1e-7 1 1 1v-3z"/>
+                           <path d="m9 9 1 1-3 1e-7 1-1z"/>
+                           <path d="m4e-8 10h3l-1-1-1 1e-7z"/>
+                           <path d="m0 7 1 1v1l-1 1z"/>
+                        </g>
+                     </svg>
+                  </div>
+                  <div class="face f1">
+                     <svg viewBox="0 0 10 10">
+                        <g fill="#784421" class="color1">
+                           <path d="m1 1v8h8v-8z"/>
+                           <path d="m1 7h8v2h-8z"/>
+                           <path d="m1 6v-2h8v2z"/>
+                           <path d="m1 3v-2h8v2z"/>
+                           <path d="m0 10h10v-10h-10v10l1-1v-8h8v8h-8z"/>
+                        </g>
+                        <g class="color2" fill="#a80">
+                           <path d="m0 3 1-1-2e-8-1-1-1z"/>
+                           <path d="m0 0h3l-1 1-1-2e-8z"/>
+                           <path d="m8 1 1-2e-8 1-1h-3z"/>
+                           <path d="m9 1 1-1 2e-7 3-1-1z"/>
+                           <path d="m9 8 1e-7 1 1 1v-3z"/>
+                           <path d="m9 9 1 1-3 1e-7 1-1z"/>
+                           <path d="m4e-8 10h3l-1-1-1 1e-7z"/>
+                           <path d="m0 7 1 1v1l-1 1z"/>
+                        </g>
+                     </svg>
+                  </div>
+                  <div class="face f2">
+                     <svg viewBox="0 0 10 10">
+                        <g fill="#784421" class="color1">
+                           <path d="m1 1v8h8v-8z"/>
+                           <path d="m1 7h8v2h-8z"/>
+                           <path d="m1 6v-2h8v2z"/>
+                           <path d="m1 3v-2h8v2z"/>
+                           <path d="m0 10h10v-10h-10v10l1-1v-8h8v8h-8z"/>
+                        </g>
+                        <g class="color2" fill="#a80">
+                           <path d="m0 3 1-1-2e-8-1-1-1z"/>
+                           <path d="m0 0h3l-1 1-1-2e-8z"/>
+                           <path d="m8 1 1-2e-8 1-1h-3z"/>
+                           <path d="m9 1 1-1 2e-7 3-1-1z"/>
+                           <path d="m9 8 1e-7 1 1 1v-3z"/>
+                           <path d="m9 9 1 1-3 1e-7 1-1z"/>
+                           <path d="m4e-8 10h3l-1-1-1 1e-7z"/>
+                           <path d="m0 7 1 1v1l-1 1z"/>
+                        </g>
+                     </svg>
+                  </div>
+                  <div class="face f3">
+                     <svg viewBox="0 0 10 10">
+                        <g fill="#784421" class="color1">
+                           <path d="m1 1v8h8v-8z"/>
+                           <path d="m1 7h8v2h-8z"/>
+                           <path d="m1 6v-2h8v2z"/>
+                           <path d="m1 3v-2h8v2z"/>
+                           <path d="m0 10h10v-10h-10v10l1-1v-8h8v8h-8z"/>
+                        </g>
+                        <g class="color2" fill="#a80">
+                           <path d="m0 3 1-1-2e-8-1-1-1z"/>
+                           <path d="m0 0h3l-1 1-1-2e-8z"/>
+                           <path d="m8 1 1-2e-8 1-1h-3z"/>
+                           <path d="m9 1 1-1 2e-7 3-1-1z"/>
+                           <path d="m9 8 1e-7 1 1 1v-3z"/>
+                           <path d="m9 9 1 1-3 1e-7 1-1z"/>
+                           <path d="m4e-8 10h3l-1-1-1 1e-7z"/>
+                           <path d="m0 7 1 1v1l-1 1z"/>
+                        </g>
+                     </svg>
+                  </div>
+                  <div class="face f4">
+                     <svg viewBox="0 0 10 10">
+                        <g fill="#784421" class="color1">
+                           <path d="m1 1v8h8v-8z"/>
+                           <path d="m1 7h8v2h-8z"/>
+                           <path d="m1 6v-2h8v2z"/>
+                           <path d="m1 3v-2h8v2z"/>
+                           <path d="m0 10h10v-10h-10v10l1-1v-8h8v8h-8z"/>
+                        </g>
+                        <g class="color2" fill="#a80">
+                           <path d="m0 3 1-1-2e-8-1-1-1z"/>
+                           <path d="m0 0h3l-1 1-1-2e-8z"/>
+                           <path d="m8 1 1-2e-8 1-1h-3z"/>
+                           <path d="m9 1 1-1 2e-7 3-1-1z"/>
+                           <path d="m9 8 1e-7 1 1 1v-3z"/>
+                           <path d="m9 9 1 1-3 1e-7 1-1z"/>
+                           <path d="m4e-8 10h3l-1-1-1 1e-7z"/>
+                           <path d="m0 7 1 1v1l-1 1z"/>
+                        </g>
+                     </svg>
+                  </div>
+                  <div class="face f5">
+                     <button>click</button>
+                     <svg viewBox="0 0 10 10">
+                        <g fill="#784421" class="color1">
+                           <path d="m1 1v8h8v-8z"/>
+                           <path d="m1 7h8v2h-8z"/>
+                           <path d="m1 6v-2h8v2z"/>
+                           <path d="m1 3v-2h8v2z"/>
+                           <path d="m0 10h10v-10h-10v10l1-1v-8h8v8h-8z"/>
+                        </g>
+                        <g class="color2" fill="#a80">
+                           <path d="m0 3 1-1-2e-8-1-1-1z"/>
+                           <path d="m0 0h3l-1 1-1-2e-8z"/>
+                           <path d="m8 1 1-2e-8 1-1h-3z"/>
+                           <path d="m9 1 1-1 2e-7 3-1-1z"/>
+                           <path d="m9 8 1e-7 1 1 1v-3z"/>
+                           <path d="m9 9 1 1-3 1e-7 1-1z"/>
+                           <path d="m4e-8 10h3l-1-1-1 1e-7z"/>
+                           <path d="m0 7 1 1v1l-1 1z"/>
+                        </g>
+                     </svg>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+    </div>
+
+    <ul id="logs">
+        <li>Init</li>
+    </ul>
+
+    <div style="display: none;">
+
+        <!-- / CANNONBALL -->
+        <div id="cannonball">
+            <svg viewBox="0 0 35 35">
+                <g fill="#d4aa00">
+                    <path d="m25 25-15-15v15z"/>
+                    <path d="m25 25v-15h-15z"/>
+                    <path d="m25 30h-15v-5h15z"/>
+                    <path d="m10 5h15v5h-15z"/>
+                    <path d="m5 25v-15l5-5v25z"/>
+                    <path d="m25 5 5 5v15l-5 5z"/>
+                </g>
+            </svg>
+        </div>
+
+        <!-- / SHIELD -->
+        <div id="shield">
+            <svg viewBox="0 0 35 35">
+                <g fill="#d4aa00">
+                    <path d="m20 32h-5v-10l5 5z"/>
+                    <path d="m15 12v10l5 5v-15z"/>
+                    <path d="m25 27-5 5v-20h5z"/>
+                    <path d="m15 32-5-5v-15h5z"/>
+                    <path d="m15 12 5-5h5v5z"/>
+                    <path d="m10 7h5l5 5h-10z"/>
+                    <path d="m10 27-5-6v-19l5 5z"/>
+                    <path d="m25 7 5-5v20l-5 5z"/>
+                </g>
+            </svg>
+        </div>
+
+        <!-- / DICEFACE -->
+        <div id="diceface">
+         <svg viewBox="0 0 59 59">
+            <path d="m6.61458 6.61458v6.61458h46.3021v-6.61458z" fill="#784421"/>
+            <path d="m6.61458 52.9167v-6.61458h46.3021v6.61458z" fill="#784421"/>
+            <path d="m6.61458 19.8438v6.61458h46.3021v-6.61458z" fill="#784421"/>
+            <path d="m6.61458 33.0729v6.61458h46.3021v-6.61458z" fill="#784421"/>
+            <path d="m6.61458 39.6875v6.61458h46.3021v-6.61458z" fill="#784421"/>
+            <path d="m6.61458 26.4583v6.61458h46.3021v-6.61458z" fill="#784421"/>
+            <path d="m6.61458 13.2292v6.61458h46.3021v-6.61458z" fill="#784421"/>
+            <path d="m0 59.5313 6.61458-6.61458h46.3021v-46.3021h-46.3021v46.3021l-6.61458 6.61458v-59.5313h59.5313v59.5313z" fill="#784421"/>
+            <path d="M 0,19.84375 6.6145836,13.229167 V 6.6145836 L 0,0 Z" fill="#a80"/>
+            <path d="m6.61458 6.61458h6.61458l6.61458-6.61458h-19.8438z" fill="#a80"/>
+            <path d="m39.6875 0h19.8438l-6.61458 6.61458h-6.61458z" fill="#a80"/>
+            <path d="m52.9167 6.61458v6.61458l6.61458 6.61458v-19.8438z" fill="#a80"/>
+            <path d="m59.5313 39.6875-6.61458 6.61458v6.61458l6.61458 6.61458z" fill="#a80"/>
+            <path d="m59.5313 59.5313h-19.8438l6.61458-6.61458h6.61458z" fill="#a80"/>
+            <path d="m0 59.5313h19.8438l-6.61458-6.61458h-6.61458z" fill="#a80"/>
+            <path d="m0 39.6875 6.61458 6.61458v6.61458l-6.61458 6.61458z" fill="#a80"/>
+            </svg>
+            
+        </div>
+
+        <!-- / ROCK  -->
+        <div id="rock">
+            <svg viewBox="0 0 46 60">
+               <path d="m13.2292 13.2292v39.6875h6.61458v-39.6875z" fill="#d4aa00"/>
+               <path d="m26.4583 13.2292h6.61458v39.6875h-6.61458z" fill="#d4aa00"/>
+               <path d="m26.4583 13.2292h-6.61458v39.6875h6.61458z" fill="#d4aa00"/>
+               <path d="m13.2292 13.2292 6.61458-6.61458h6.61458l6.61458 6.61458z" fill="#d4aa00"/>
+               <path d="m33.0729 26.4583v26.4583h6.61458v-26.4583z" fill="#d4aa00"/>
+               <path d="m6.61458 33.0729v19.8437h6.61458v-19.8437z" fill="#d4aa00"/>
+               <path d="m19.8437 26.4583 6.61458-6.61458h6.61458l6.61458 6.61458z" fill="#d4aa00"/>
+               <path d="m6.61458 33.0729 6.61458-6.61458h6.61458l6.61458 6.61458z" fill="#d4aa00"/>
+               <path d="m0 0v59.5312h46.3021v-59.5312z" fill="none"/>
+            </svg>
+        </div>
+
+    </div>
+
+    <!-- <script defer src="/js/database.js" type="module"></script> -->
+    <script defer src="./js/functions.js"></script>
+    <script defer src="./js/classes.js"></script>
+    <script defer src="./js/game.js"></script>
+    <script defer src="./js/fps.js"></script>
+</body>
+</html>

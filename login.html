@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face { font-family: origram; src: url(css/origames.ttf); }
+        :root { --tile: 50vh; --unit: calc(var(--tile) / 10) }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #023; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; color: #fff; font-family: origram; }
+        .container { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); transform-origin: center; display: grid; grid-template-columns: repeat(7, 1fr); gap: calc(var(--unit)/ 2); animation: scaleIn 2s ease-out; }
+        .box { width: var(--tile); aspect-ratio: 1/1; max-width: 90vw; box-shadow: inset 0 0 var(--unit) #FFF; clip-path: polygon(var(--unit) 0%, calc(100% - var(--unit)) 0%, 100% var(--unit), 100% calc(100% - var(--unit)), calc(100% - var(--unit)) 100%, var(--unit) 100%, 0% calc(100% - var(--unit)), 0% var(--unit)); padding: var(--unit); display: flex; justify-content: center; flex-direction: column; align-items: center; gap: calc( var(--unit) / 2 ) }
+        svg { height: 25%; }
+        label { width: 100%; display: flex; justify-content: center; flex-direction: column; align-items: center; font-size: calc(var(--unit) / 2); }
+        input { border: none; outline: none; border-radius: 0; padding: calc( var(--unit) / 4 ); font-size: calc( var(--unit) / 2); width: 100%; font-family: origram; text-align: center; font-size: 700; clip-path: polygon(calc(var(--unit) / 2) 0%, calc(100% - calc(var(--unit) / 2)) 0%, 100% calc( var(--unit) / 2 ), 100% calc(100% - calc(var(--unit) / 2)), calc(100% - calc(var(--unit) / 2)) 100%, calc(var(--unit) / 2) 100%, 0% calc(100% - calc(var(--unit) / 2)), 0% calc(var(--unit) / 2)); transition: .2s ease; }
+        input[type="submit"]:hover { transform: scale(1.05); cursor: pointer; }
+
+        @keyframes scaleIn {
+            from { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <form onsubmit="event.preventDefault()">
+
+        <div class="box">
+            <svg version="1.1" viewBox="0 0 54 57" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                <filter id="a" x="-1.2" y="-1.2" width="3.4" height="3.4" color-interpolation-filters="sRGB">
+                <feFlood flood-color="rgb(0,0,0)" flood-opacity=".65" result="flood"/>
+                <feComposite in="flood" in2="SourceGraphic" operator="in" result="composite1"/>
+                <feGaussianBlur in="composite1" result="blur" stdDeviation="1"/>
+                <feOffset dx="0" dy="0" preserveAlpha="false" result="offset"/>
+                <feComposite in="SourceGraphic" in2="offset" result="composite2"/>
+                </filter>
+                </defs>
+                <g fill="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width=".2">
+                <path d="m33 16-4 4h-4l4-4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m50 43-4 4h-4l4-4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m4 53v-14l4-4v14z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m20 41-2-2h4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m24 43v6h4v-6z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m30 37h-2v-2z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m32 26 2 2v-2z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m32 30h2l-2 2z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m30 33v-5l2-2v9l-2 2z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m7 8v4h4v-4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m19 16v6h-4v-6z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m7 22 4-4v4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m7 8 4-4h4l4 4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m7 12 4 4h8l-4-4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m19 22-4 4h-4l-4-4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m21 16v6h4v-6z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m21 22 4 4h4l4-4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m25 12-4 4h12l-4-4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m35 22v-6h4v6z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m43 16v6l4 4v-10z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m35 22 4 4 4-4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m35 16 4-4h4l4 4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m25 30v3h-2v-3z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m27 33v-3h2v3z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m23 33 2 2h2l2-2z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m23 30 2-2h2l2 2z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m28 39h4l4 4h-12z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m24 49 4 4h4l4-4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m22 49-4 4v-10l4-4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m12 53h-8l4-4h4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m16 49-4 4v-18h4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m12 31h-8l4 4h8z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m38 43v6h4v-6z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m38 43 4-4h4l4 4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                <path d="m38 49 4 4h4l4-4z" filter="url(#a)" style="paint-order:stroke fill markers"/>
+                </g>
+                </svg>
+                    <label>
+                        <p>Email</p>
+                        <input type="email" id="username" required>
+                    </label>
+                    <label>
+                        <p>Password</p>
+                        <input type="password" id="password" required>
+                    </label>
+                    <input id="login-btn" type="submit" value="Login">
+                </div>
+            </form>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+
+    </div>
+    <script defer type="module">
+
+        import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+        const supabaseUrl = 'https://bexcxoigkrcwpybuwpwy.supabase.co'
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJleGN4b2lna3Jjd3B5YnV3cHd5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTM4NDc5NTIsImV4cCI6MjAwOTQyMzk1Mn0.eGIj4DU57L8bEQvjtETsvxAoVbu8AquqHsGiSm0CkTY'
+        const supabase = createClient(supabaseUrl, supabaseKey);
+        console.log(supabase)
+
+        document.querySelector(`#login-btn`).addEventListener('click', async ()=>{
+
+            const email = document.querySelector('#username');
+            const pass = document.querySelector('#password');
+
+            const response = await supabase.auth.signInWithPassword({
+                email: email.value,
+                password: pass.value,
+            })
+
+            if (response.error) alert('no player found');
+            else window.location.href = window.location.origin + '/game.html';
+
+        })
+    </script>
+</body>
+</html>
